@@ -493,6 +493,7 @@
 
         .footer-links {
             list-style: none;
+            margin-bottom: 15px;
         }
 
         .footer-links li {
@@ -507,6 +508,18 @@
         .footer-links a:hover {
             color: var(--primary);
             padding-left: 5px;
+        }
+
+        .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .back-to-top i {
+            margin-right: 5px;
         }
 
         .footer-bottom {
@@ -621,15 +634,15 @@
         }
     </style>
 </head>
-<body>
+<body id="top">
     <!-- Header & Navigation -->
     <header id="header">
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">Jalan<span>Makan</span></a>
+                <a href="#top" class="logo">Jalan<span>Makan</span></a>
                 
                 <ul class="nav-links">
-                    <li><a href="https://daem.my.id" target="_blank"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#top"><i class="fas fa-home"></i> Home</a></li>
                     <li>
                         <a href="#">Destinasi <i class="fas fa-chevron-down"></i></a>
                         <ul class="submenu">
@@ -789,6 +802,7 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
+                    <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Kembali ke Atas</a>
                 </div>
                 
                 <div class="footer-col">
@@ -800,17 +814,19 @@
                         <li><a href="#">Petualangan Alam</a></li>
                         <li><a href="#">Wisata Budaya</a></li>
                     </ul>
+                    <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Kembali ke Atas</a>
                 </div>
                 
                 <div class="footer-col">
                     <h3>Link Cepat</h3>
                     <ul class="footer-links">
-                        <li><a href="https://daem.my.id" target="_blank">Home</a></li>
+                        <li><a href="#top">Home</a></li>
                         <li><a href="#">Tentang Kami</a></li>
                         <li><a href="#">Kontak</a></li>
                         <li><a href="#">Kebijakan Privasi</a></li>
                         <li><a href="#">Syarat & Ketentuan</a></li>
                     </ul>
+                    <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Kembali ke Atas</a>
                 </div>
                 
                 <div class="footer-col">
@@ -818,11 +834,12 @@
                     <p><i class="fas fa-map-marker-alt"></i> Jl. Petualangan No. 123, Jakarta</p>
                     <p><i class="fas fa-phone"></i> +62 123 456 789</p>
                     <p><i class="fas fa-envelope"></i> hello@jalanmakan.com</p>
+                    <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Kembali ke Atas</a>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 JalanMakan. All rights reserved. | <a href="https://daem.my.id" target="_blank" style="color: var(--accent);">Home</a></p>
+                <p>&copy; 2023 JalanMakan. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -863,7 +880,7 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 100,
+                        top: targetId === '#top' ? 0 : targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
                     
