@@ -1,235 +1,791 @@
-                                <span><i class="fas fa-utensils"></i> Gyros & Moussaka</span>
-                            </div>
-                        </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JalanMakan - Vlog Travel & Kuliner</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --text: #333333;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            width: 200px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .nav-links li:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 12px 20px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .submenu a:hover {
+            background-color: #f9f9f9;
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)), url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            position: relative;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+        }
+
+        /* Featured Posts */
+        .featured-posts {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .post-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-img {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .post-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .post-card:hover .post-img img {
+            transform: scale(1.1);
+        }
+
+        .post-content {
+            padding: 20px;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .post-meta i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+
+        .post-meta span {
+            margin-right: 15px;
+        }
+
+        .post-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .post-excerpt {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .read-more {
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .about-content {
+            flex: 1;
+            padding-right: 30px;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image:before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--primary);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 0;
+            background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 0.8)), url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            color: white;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+
+        .newsletter-btn {
+            padding: 0 25px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .back-to-top i {
+            margin-right: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about {
+                flex-direction: column;
+            }
+            
+            .about-content {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .submenu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                width: auto;
+                background: transparent;
+                box-shadow: none;
+                margin-top: 10px;
+                display: none;
+            }
+            
+            .nav-links li:hover .submenu {
+                display: block;
+            }
+            
+            .submenu a {
+                padding: 8px 20px;
+                border-bottom: none;
+            }
+            
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-btn {
+                border-radius: 30px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .category-grid, .post-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#top" class="logo">Jalan<span>Makan</span></a>
+                
+                <ul class="nav-links">
+                    <li><a href="#top"><i class="fas fa-home"></i> Home</a></li>
+                    <li>
+                        <a href="#">Destinasi <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#indonesia">Indonesia</a></li>
+                            <li><a href="#international">International</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Kuliner</a></li>
+                    <li><a href="#">Tips</a></li>
+                    <li><a href="#">Tentang</a></li>
+                    <li><a href="#">Kontak</a></li>
+                </ul>
+                
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Jelajahi Dunia Melalui Petualangan & Rasa</h1>
+                <p>Temukan destinasi travel menakjubkan dan kuliner lezat dari seluruh dunia melalui vlog perjalanan kami.</p>
+                <a href="#" class="btn">Jelajahi Sekarang <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Kategori Populer</h2>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1555400118-e9b8c3c6c8e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Street Food">
+                    <div class="category-content">
+                        <h3>Street Food Asia</h3>
+                        <p>Jelajahi kekayaan kuliner jalanan di berbagai negara Asia</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1580651316327-6a6c369f6e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fine Dining">
+                    <div class="category-content">
+                        <h3>Fine Dining</h3>
+                        <p>Pengalaman makan mewah di restoran bintang Michelin</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nature">
+                    <div class="category-content">
+                        <h3>Petualangan Alam</h3>
+                        <p>Destinasi alam menakjubkan yang wajib dikunjungi</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Culinary Section -->
-    <section id="culinary" class="culinary">
+    <!-- Featured Posts -->
+    <section class="featured-posts">
         <div class="container">
-            <h2 class="section-title">Kuliner Nusantara & Dunia</h2>
+            <h2 class="section-title">Vlog Terbaru</h2>
             
-            <div class="culinary-tabs">
-                <button class="culinary-tab-btn active" data-target="traditional">Tradisional</button>
-                <button class="culinary-tab-btn" data-target="modern">Modern</button>
-            </div>
-            
-            <div id="traditional" class="culinary-content active">
-                <h3 class="section-subtitle">Kuliner Tradisional Autentik</h3>
-                <div class="culinary-grid">
-                    <div class="culinary-card">
-                        <div class="culinary-img">
-                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rendang">
-                        </div>
-                        <div class="culinary-details">
-                            <h3 class="culinary-title">Rendang</h3>
-                            <div class="culinary-origin">
-                                <i class="fas fa-map-marker-alt"></i> Sumatra Barat, Indonesia
-                            </div>
-                            <p class="culinary-description">Daging sapi dimasak perlahan dengan santan dan rempah-rempah khas hingga empuk dan meresap. Dinobatkan sebagai makanan terenak di dunia oleh CNN Travel.</p>
-                            <div class="culinary-meta">
-                                <span><i class="fas fa-star"></i> 4.9 (3.8k)</span>
-                                <span><i class="fas fa-fire"></i> Pedas Sedang</span>
-                            </div>
-                        </div>
+            <div class="post-grid">
+                <div class="post-card">
+                    <div class="post-img">
+                        <img src="https://images.unsplash.com/photo-1520250497590-447c22b0bcb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bali Travel">
                     </div>
-                    
-                    <div class="culinary-card">
-                        <div class="culinary-img">
-                            <img src="https://images.unsplash.com/photo-1585036156171-384164a8c675?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sushi">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> 12 Juni 2023</span>
+                            <span><i class="far fa-clock"></i> 5 min read</span>
                         </div>
-                        <div class="culinary-details">
-                            <h3 class="culinary-title">Sushi</h3>
-                            <div class="culinary-origin">
-                                <i class="fas fa-map-marker-alt"></i> Jepang
-                            </div>
-                            <p class="culinary-description">Nasi yang dibentuk bersama lauk berupa makanan laut, daging, sayuran mentah atau sudah dimasak dengan cita rasa umami yang khas.</p>
-                            <div class="culinary-meta">
-                                <span><i class="fas fa-star"></i> 4.8 (2.9k)</span>
-                                <span><i class="fas fa-leaf"></i> Segar</span>
-                            </div>
-                        </div>
+                        <h3 class="post-title">Hidden Gems di Bali: Tempat yang Tidak Banyak Diketahui Turis</h3>
+                        <p class="post-excerpt">Jelajahi sisi tersembunyi Bali yang menakjubkan, jauh dari keramaian turis...</p>
+                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    
-                    <div class="culinary-card">
-                        <div class="culinary-img">
-                            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tacos">
-                        </div>
-                        <div class="culinary-details">
-                            <h3 class="culinary-title">Tacos</h3>
-                            <div class="culinary-origin">
-                                <i class="fas fa-map-marker-alt"></i> Meksiko
-                            </div>
-                            <p class="culinary-description">Tortilla jagung atau gandum yang dilipat atau digulung di sekitar isian seperti daging, keju, sayuran, dan salsanya yang khas.</p>
-                            <div class="culinary-meta">
-                                <span><i class="fas fa-star"></i> 4.7 (2.5k)</span>
-                                <span><i class="fas fa-fire"></i> Pedas</span>
-                            </div>
-                        </div>
+                </div>
+                
+                <div class="post-card">
+                    <div class="post-img">
+                        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Japanese Food">
                     </div>
-
-                    <div class="culinary-card">
-                        <div class="culinary-img">
-                            <img src="https://images.unsplash.com/photo-1633896949678-1b4f11d6f7ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sate">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> 8 Juni 2023</span>
+                            <span><i class="far fa-clock"></i> 7 min read</span>
                         </div>
-                        <div class="culinary-details">
-                            <h3 class="culinary-title">Sate</h3>
-                            <div class="culinary-origin">
-                                <i class="fas fa-map-marker-alt"></i> Jawa, Indonesia
-                            </div>
-                            <p class="culinary-description">Potongan daging yang ditusuk dan dibakar dengan bara arang kayu, disajikan dengan saus kacang atau kecap yang manis dan gurih.</p>
-                            <div class="culinary-meta">
-                                <span><i class="fas fa-star"></i> 4.9 (3.2k)</span>
-                                <span><i class="fas fa-fire"></i> Manis Gurih</span>
-                            </div>
-                        </div>
+                        <h3 class="post-title">Jalan-Jalan Kuliner di Tokyo: Dari Sushi hingga Ramen</h3>
+                        <p class="post-excerpt">Nikmati perjalanan kuliner menyusuri jalanan Tokyo yang penuh dengan cita rasa autentik...</p>
+                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
                     </div>
-
-                    <div class="culinary-card">
-                        <div class="culinary-img">
-                            <img src="https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pho">
-                        </div>
-                        <div class="culinary-details">
-                            <h3 class="culinary-title">Pho</h3>
-                            <div class="culinary-origin">
-                                <i class="fas fa-map-marker-alt"></i> Vietnam
-                            </div>
-                            <p class="culinary-description">Mi beras dalam kuah kaldu sapi atau ayam yang gurih dengan irisan daging, daun ketumbar, dan tauge. Disajikan dengan potongan jeruk nipis.</p>
-                            <div class="culinary-meta">
-                                <span><i class="fas fa-star"></i> 4.8 (2.4k)</span>
-                                <span><i class="fas fa-utensils"></i> Gurih</span>
-                            </div>
-                        </div>
+                </div>
+                
+                <div class="post-card">
+                    <div class="post-img">
+                        <img src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mountain Adventure">
                     </div>
-
-                    <div class="culinary-card">
-                        <div class="culinary-img">
-                            <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Goulash">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> 3 Juni 2023</span>
+                            <span><i class="far fa-clock"></i> 9 min read</span>
                         </div>
-                        <div class="culinary-details">
-                            <h3 class="culinary-title">Goulash</h3>
-                            <div class="culinary-origin">
-                                <i class="fas fa-map-marker-alt"></i> Hungaria
-                            </div>
-                            <p class="culinary-description">Rebusan daging sapi dengan paprika dan sayuran, memiliki cita rasa hangat dan sedikit pedas. Makanan nasional Hungaria yang terkenal.</p>
-                            <div class="culinary-meta">
-                                <span><i class="fas fa-star"></i> 4.7 (1.9k)</span>
-                                <span><i class="fas fa-fire"></i> Sedang Pedas</span>
-                            </div>
-                        </div>
+                        <h3 class="post-title">Mendaki Gunung Rinjani: Pengalaman Spiritual dan Petualangan</h3>
+                        <p class="post-excerpt">Sebuah perjalanan mendaki gunung berapi aktif tertinggi kedua di Indonesia yang menantang...</p>
+                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            
-            <div id="modern" class="culinary-content">
-                <h3 class="section-subtitle">Kuliner Modern Kekinian</h3>
-                <div class="culinary-grid">
-                    <div class="culinary-card">
-                        <div class="culinary-img">
-                            <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gourmet Burger">
-                        </div>
-                        <div class="culinary-details">
-                            <h3 class="culinary-title">Gourmet Burger</h3>
-                            <div class="culinary-origin">
-                                <i class="fas fa-map-marker-alt"></i> Global
-                            </div>
-                            <p class="culinary-description">Burger dengan patty premium, roti artisan, dan topping kreatif seperti truffle, keju biru, atau bacon maple. Pengalaman burger tingkat tinggi.</p>
-                            <div class="culinary-meta">
-                                <span><i class="fas fa-star"></i> 4.8 (2.7k)</span>
-                                <span><i class="fas fa-cheese"></i> Premium</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="culinary-card">
-                        <div class="culinary-img">
-                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Artisan Pizza">
-                        </div>
-                        <div class="culinary-details">
-                            <h3 class="culinary-title">Artisan Pizza</h3>
-                            <div class="culinary-origin">
-                                <i class="fas fa-map-marker-alt"></i> Italia (Modern)
-                            </div>
-                            <p class="culinary-description">Pizza dengan adonan fermentasi lambat, saus tomat premium, dan topping inovatif seperti pear dengan gorgonzola atau prosciutto dengan ara.</p>
-                            <div class="culinary-meta">
-                                <span><i class="fas fa-star"></i> 4.7 (2.3k)</span>
-                                <span><i class="fas fa-wheat-alt"></i> Fermentasi Lambat</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="culinary-card">
-                        <div class="culinary-img">
-                            <img src="https://images.unsplash.com/photo-1551504734-b464e32a163a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sushi Burrito">
-                        </div>
-                        <div class="culinary-details">
-                            <h3 class="culinary-title">Sushi Burrito</h3>
-                            <div class="culinary-origin">
-                                <i class="fas fa-map-marker-alt"></i> Fusion Japanese-American
-                            </div>
-                            <p class="culinary-description">Perpaduan antara sushi dan burrito - nori digulung dengan nasi sushi, ikan mentah, sayuran, dan saus kreatif dalam bentuk besar seperti burrito.</p>
-                            <div class="culinary-meta">
-                                <span><i class="fas fa-star"></i> 4.6 (2.1k)</span>
-                                <span><i class="fas fa-sync-alt"></i> Fusion</span>
-                            </div>
-                        </div>
-                    </div>
+        </div>
+    </section>
 
-                    <div class="culinary-card">
-                        <div class="culinary-img">
-                            <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Avocado Toast">
-                        </div>
-                        <div class="culinary-details">
-                            <h3 class="culinary-title">Avocado Toast</h3>
-                            <div class="culinary-origin">
-                                <i class="fas fa-map-marker-alt"></i> Australia/Global
-                            </div>
-                            <p class="culinary-description">Roti panggang dengan alpukat tumbuh, ditambah topping seperti telur poach, biji-bijian, atau microgreens. Menu brunch kekinian yang sehat.</p>
-                            <div class="culinary-meta">
-                                <span><i class="fas fa-star"></i> 4.5 (1.8k)</span>
-                                <span><i class="fas fa-heart"></i> Sehat</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="culinary-card">
-                        <div class="culinary-img">
-                            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dalgona Coffee">
-                        </div>
-                        <div class="culinary-details">
-                            <h3 class="culinary-title">Dalgona Coffee</h3>
-                            <div class="culinary-origin">
-                                <i class="fas fa-map-marker-alt"></i> Korea Selatan
-                            </div>
-                            <p class="culinary-description">Minuman kopi kekinian dengan busa kopi whipped yang creamy di atas susu. Menjadi viral selama pandemi dan tetap populer hingga sekarang.</p>
-                            <div class="culinary-meta">
-                                <span><i class="fas fa-star"></i> 4.4 (1.7k)</span>
-                                <span><i class="fas fa-mug-hot"></i> Trendy</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="culinary-card">
-                        <div class="culinary-img">
-                            <img src="https://images.unsplash.com/photo-1626700051175-6818013a1df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cloud Bread">
-                        </div>
-                        <div class="culinary-details">
-                            <h3 class="culinary-title">Cloud Bread</h3>
-                            <div class="culinary-origin">
-                                <i class="fas fa-map-marker-alt"></i> Global (Trend TikTok)
-                            </div>
-                            <p class="culinary-description">Roti awan yang terbuat dari putih telur kocok dengan gula, dipanggang hingga memiliki tekstur lembut seperti awan. Viral di media sosial.</p>
-                            <div class="culinary-meta">
-                                <span><i class="fas fa-star"></i> 4.3 (1.5k)</span>
-                                <span><i class="fas fa-cloud"></i> Viral</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">Tentang JalanMakan</h2>
+                <p>JalanMakan adalah platform vlog travel dan kuliner yang didedikasikan untuk para petualang dan pecinta makanan. Kami berbagi pengalaman perjalanan dan kuliner dari berbagai belahan dunia.</p>
+                <p>Dengan lebih dari 200 destinasi dan 500 kuliner yang telah kami jelajahi, kami berkomitmen untuk memberikan konten berkualitas tinggi yang menginspirasi Anda untuk menjelajahi dunia.</p>
+                <a href="#" class="btn">Selengkapnya Tentang Kami</a>
             </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About Us">
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Berlangganan Newsletter Kami</h2>
+            <p>Dapatkan update terbaru tentang vlog travel dan kuliner langsung ke inbox Anda</p>
+            
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Alamat email Anda">
+                <button type="submit" class="newsletter-btn">Berlangganan</button>
+            </form>
         </div>
     </section>
 
@@ -252,10 +808,10 @@
                 <div class="footer-col">
                     <h3>Kategori</h3>
                     <ul class="footer-links">
-                        <li><a href="#destinations">Destinasi Travel</a></li>
-                        <li><a href="#culinary">Kuliner</a></li>
-                        <li><a href="#traditional">Makanan Tradisional</a></li>
-                        <li><a href="#modern">Makanan Modern</a></li>
+                        <li><a href="#">Destinasi Travel</a></li>
+                        <li><a href="#">Kuliner Street Food</a></li>
+                        <li><a href="#">Fine Dining</a></li>
+                        <li><a href="#">Petualangan Alam</a></li>
                         <li><a href="#">Wisata Budaya</a></li>
                     </ul>
                     <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Kembali ke Atas</a>
@@ -313,40 +869,6 @@
             }
         });
 
-        // Tab Switching for Destinations
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked button and corresponding content
-                btn.classList.add('active');
-                const target = btn.getAttribute('data-target');
-                document.getElementById(target).classList.add('active');
-            });
-        });
-
-        // Tab Switching for Culinary
-        const culinaryTabBtns = document.querySelectorAll('.culinary-tab-btn');
-        const culinaryContents = document.querySelectorAll('.culinary-content');
-        
-        culinaryTabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
-                culinaryTabBtns.forEach(b => b.classList.remove('active'));
-                culinaryContents.forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked button and corresponding content
-                btn.classList.add('active');
-                const target = btn.getAttribute('data-target');
-                document.getElementById(target).classList.add('active');
-            });
-        });
-
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -372,4 +894,4 @@
         });
     </script>
 </body>
-</html>
+</html>v
