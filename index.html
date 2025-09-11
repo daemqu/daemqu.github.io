@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JalanMakan - Vlog Travel & Kuliner</title>
+    <title>Destinasi - JalanMakan</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -185,107 +185,115 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
+        /* Page Header */
+        .page-header {
+            height: 60vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)), url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            justify-content: center;
+            background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)), url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
             color: white;
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            max-width: 700px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Categories */
-        .categories {
-            padding: 80px 0;
-        }
-
-        .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-top: 80px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            font-size: 1.1rem;
+        }
+
+        .breadcrumb li {
+            margin: 0 10px;
             position: relative;
         }
 
-        .section-title:after {
-            content: '';
+        .breadcrumb li:after {
+            content: '/';
             position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--primary);
+            right: -15px;
+            color: #ccc;
         }
 
-        .category-grid {
+        .breadcrumb li:last-child:after {
+            display: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        /* Destinations Tabs */
+        .destinations {
+            padding: 80px 0;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .tab-btn {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #777;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .tab-btn:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+        }
+
+        .tab-btn.active:after {
+            width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Destination Grid */
+        .destination-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .category-card {
-            position: relative;
-            height: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .category-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .category-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .category-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: white;
-        }
-
-        /* Featured Posts */
-        .featured-posts {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-        }
-
-        .post-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .post-card {
+        .destination-card {
             background-color: white;
             border-radius: 10px;
             overflow: hidden;
@@ -293,146 +301,71 @@
             transition: var(--transition);
         }
 
-        .post-card:hover {
-            transform: translateY(-5px);
+        .destination-card:hover {
+            transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .post-img {
-            height: 220px;
+        .destination-img {
+            height: 200px;
             overflow: hidden;
         }
 
-        .post-img img {
+        .destination-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
 
-        .post-card:hover .post-img img {
+        .destination-card:hover .destination-img img {
             transform: scale(1.1);
         }
 
-        .post-content {
+        .destination-content {
             padding: 20px;
         }
 
-        .post-meta {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            color: #777;
-        }
-
-        .post-meta i {
-            margin-right: 5px;
-            color: var(--primary);
-        }
-
-        .post-meta span {
-            margin-right: 15px;
-        }
-
-        .post-title {
+        .destination-title {
             font-size: 1.4rem;
             margin-bottom: 10px;
         }
 
-        .post-excerpt {
+        .destination-location {
+            display: flex;
+            align-items: center;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .destination-location i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+
+        .destination-excerpt {
             margin-bottom: 15px;
             color: #555;
         }
 
-        .read-more {
+        .destination-meta {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .destination-meta span {
+            display: flex;
+            align-items: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .destination-meta i {
+            margin-right: 5px;
             color: var(--primary);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .read-more i {
-            margin-left: 5px;
-            transition: var(--transition);
-        }
-
-        .read-more:hover i {
-            transform: translateX(5px);
-        }
-
-        /* About Section */
-        .about {
-            padding: 80px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .about-content {
-            flex: 1;
-            padding-right: 30px;
-        }
-
-        .about-image {
-            flex: 1;
-            position: relative;
-        }
-
-        .about-image img {
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-image:before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--primary);
-            border-radius: 10px;
-            z-index: -1;
-        }
-
-        /* Newsletter */
-        .newsletter {
-            padding: 80px 0;
-            background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 0.8)), url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-        }
-
-        .newsletter h2 {
-            color: white;
-        }
-
-        .newsletter-form {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 30px 0 0 30px;
-            font-size: 1rem;
-        }
-
-        .newsletter-btn {
-            padding: 0 25px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 0 30px 30px 0;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .newsletter-btn:hover {
-            background-color: var(--secondary);
         }
 
         /* Footer */
@@ -493,7 +426,6 @@
 
         .footer-links {
             list-style: none;
-            margin-bottom: 15px;
         }
 
         .footer-links li {
@@ -510,18 +442,6 @@
             padding-left: 5px;
         }
 
-        .back-to-top {
-            display: inline-flex;
-            align-items: center;
-            color: var(--accent);
-            font-weight: 600;
-            margin-top: 10px;
-        }
-
-        .back-to-top i {
-            margin-right: 5px;
-        }
-
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
@@ -530,17 +450,8 @@
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .hero h1 {
+            .page-header h1 {
                 font-size: 2.8rem;
-            }
-            
-            .about {
-                flex-direction: column;
-            }
-            
-            .about-content {
-                padding-right: 0;
-                margin-bottom: 30px;
             }
         }
 
@@ -596,53 +507,55 @@
                 z-index: 1001;
             }
             
-            .hero h1 {
+            .page-header h1 {
                 font-size: 2.3rem;
             }
             
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .newsletter-form {
+            .tabs {
                 flex-direction: column;
+                align-items: center;
             }
             
-            .newsletter-input {
-                border-radius: 30px;
-                margin-bottom: 10px;
-            }
-            
-            .newsletter-btn {
-                border-radius: 30px;
-                padding: 15px;
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid #eee;
             }
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
+            .page-header h1 {
                 font-size: 2rem;
             }
             
-            .section-title {
-                font-size: 1.8rem;
+            .breadcrumb {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .category-grid, .post-grid {
+            .breadcrumb li {
+                margin: 5px 0;
+            }
+            
+            .breadcrumb li:after {
+                display: none;
+            }
+            
+            .destination-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
-<body id="top">
+<body>
     <!-- Header & Navigation -->
     <header id="header">
         <div class="container">
             <nav class="navbar">
-                <a href="#top" class="logo">Jalan<span>Makan</span></a>
+                <a href="#" class="logo">Jalan<span>Makan</span></a>
                 
                 <ul class="nav-links">
-                    <li><a href="#top"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#">Home</a></li>
                     <li>
                         <a href="#">Destinasi <i class="fas fa-chevron-down"></i></a>
                         <ul class="submenu">
@@ -663,129 +576,136 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Page Header -->
+    <section class="page-header">
         <div class="container">
-            <div class="hero-content">
-                <h1>Jelajahi Dunia Melalui Petualangan & Rasa</h1>
-                <p>Temukan destinasi travel menakjubkan dan kuliner lezat dari seluruh dunia melalui vlog perjalanan kami.</p>
-                <a href="#" class="btn">Jelajahi Sekarang <i class="fas fa-arrow-right"></i></a>
-            </div>
+            <h1>Destinasi Menarik</h1>
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li>Destinasi</li>
+            </ul>
         </div>
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories">
+    <!-- Destinations Section -->
+    <section class="destinations">
         <div class="container">
-            <h2 class="section-title">Kategori Populer</h2>
+            <div class="tabs">
+                <button class="tab-btn active" data-target="indonesia">Indonesia</button>
+                <button class="tab-btn" data-target="international">International</button>
+            </div>
             
-            <div class="category-grid">
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1555400118-e9b8c3c6c8e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Street Food">
-                    <div class="category-content">
-                        <h3>Street Food Asia</h3>
-                        <p>Jelajahi kekayaan kuliner jalanan di berbagai negara Asia</p>
+            <div id="indonesia" class="tab-content active">
+                <h2 class="section-title">Destinasi Terbaik di Indonesia</h2>
+                <div class="destination-grid">
+                    <div class="destination-card">
+                        <div class="destination-img">
+                            <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Bali">
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Bali</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i> Pulau Dewata, Indonesia
+                            </div>
+                            <p class="destination-excerpt">Pulau eksotis dengan pantai menakjubkan, budaya yang kaya, dan makanan lezat yang memikat hati setiap traveler.</p>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-utensils"></i> Kuliner Khas</span>
+                                <span><i class="fas fa-heart"></i> 4.9 (2.5k)</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1580651316327-6a6c369f6e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fine Dining">
-                    <div class="category-content">
-                        <h3>Fine Dining</h3>
-                        <p>Pengalaman makan mewah di restoran bintang Michelin</p>
+                    
+                    <div class="destination-card">
+                        <div class="destination-img">
+                            <img src="https://images.unsplash.com/photo-1589330273594-3a53eca48a6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Yogyakarta">
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Yogyakarta</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i> Jawa Tengah, Indonesia
+                            </div>
+                            <p class="destination-excerpt">Kota budaya dengan candi megah, keraton bersejarah, dan street food yang menggugah selera.</p>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-utensils"></i> Gudeg & Bakpia</span>
+                                <span><i class="fas fa-heart"></i> 4.8 (1.8k)</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nature">
-                    <div class="category-content">
-                        <h3>Petualangan Alam</h3>
-                        <p>Destinasi alam menakjubkan yang wajib dikunjungi</p>
+                    
+                    <div class="destination-card">
+                        <div class="destination-img">
+                            <img src="https://images.unsplash.com/photo-1599636448011-14c8b2ddfc83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Raja Ampat">
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Raja Ampat</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i> Papua Barat, Indonesia
+                            </div>
+                            <p class="destination-excerpt">Surga bawah laut dengan keanekaragaman hayati terumbu karang tertinggi di dunia dan pemandangan alam yang memesona.</p>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-utensils"></i> Seafood Segar</span>
+                                <span><i class="fas fa-heart"></i> 4.9 (1.2k)</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Featured Posts -->
-    <section class="featured-posts">
-        <div class="container">
-            <h2 class="section-title">Vlog Terbaru</h2>
             
-            <div class="post-grid">
-                <div class="post-card">
-                    <div class="post-img">
-                        <img src="https://images.unsplash.com/photo-1520250497590-447c22b0bcb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bali Travel">
-                    </div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar"></i> 12 Juni 2023</span>
-                            <span><i class="far fa-clock"></i> 5 min read</span>
+            <div id="international" class="tab-content">
+                <h2 class="section-title">Destinasi Terbaik International</h2>
+                <div class="destination-grid">
+                    <div class="destination-card">
+                        <div class="destination-img">
+                            <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Jepang">
                         </div>
-                        <h3 class="post-title">Hidden Gems di Bali: Tempat yang Tidak Banyak Diketahui Turis</h3>
-                        <p class="post-excerpt">Jelajahi sisi tersembunyi Bali yang menakjubkan, jauh dari keramaian turis...</p>
-                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="post-card">
-                    <div class="post-img">
-                        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Japanese Food">
-                    </div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar"></i> 8 Juni 2023</span>
-                            <span><i class="far fa-clock"></i> 7 min read</span>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Jepang</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i> Asia Timur
+                            </div>
+                            <p class="destination-excerpt">Negara dengan perpaduan tradisi kuno dan teknologi modern, menawarkan kuliner lezat dari sushi hingga ramen.</p>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-utensils"></i> Sushi & Ramen</span>
+                                <span><i class="fas fa-heart"></i> 4.9 (3.2k)</span>
+                            </div>
                         </div>
-                        <h3 class="post-title">Jalan-Jalan Kuliner di Tokyo: Dari Sushi hingga Ramen</h3>
-                        <p class="post-excerpt">Nikmati perjalanan kuliner menyusuri jalanan Tokyo yang penuh dengan cita rasa autentik...</p>
-                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-                
-                <div class="post-card">
-                    <div class="post-img">
-                        <img src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mountain Adventure">
-                    </div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="far fa-calendar"></i> 3 Juni 2023</span>
-                            <span><i class="far fa-clock"></i> 9 min read</span>
+                    
+                    <div class="destination-card">
+                        <div class="destination-img">
+                            <img src="https://images.unsplash.com/photo-1502602898536-47ad22581b52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Prancis">
                         </div>
-                        <h3 class="post-title">Mendaki Gunung Rinjani: Pengalaman Spiritual dan Petualangan</h3>
-                        <p class="post-excerpt">Sebuah perjalanan mendaki gunung berapi aktif tertinggi kedua di Indonesia yang menantang...</p>
-                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Prancis</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i> Eropa Barat
+                            </div>
+                            <p class="destination-excerpt">Negara mode dan seni dengan menara Eiffel ikonik, museum Louvre, dan masakan kelas dunia seperti croissant dan wine.</p>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-utensils"></i> Wine & Pastry</span>
+                                <span><i class="fas fa-heart"></i> 4.7 (2.8k)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <div class="destination-img">
+                            <img src="https://images.unsplash.com/photo-1506970840772-503770eb8c51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Thailand">
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Thailand</h3>
+                            <div class="destination-location">
+                                <i class="fas fa-map-marker-alt"></i> Asia Tenggara
+                            </div>
+                            <p class="destination-excerpt">Negeri seribu pagoda dengan street food terbaik di dunia, pantai eksotis, dan budaya yang memikat.</p>
+                            <div class="destination-meta">
+                                <span><i class="fas fa-utensils"></i> Tom Yum & Mango Sticky Rice</span>
+                                <span><i class="fas fa-heart"></i> 4.8 (2.1k)</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about">
-        <div class="container">
-            <div class="about-content">
-                <h2 class="section-title">Tentang JalanMakan</h2>
-                <p>JalanMakan adalah platform vlog travel dan kuliner yang didedikasikan untuk para petualang dan pecinta makanan. Kami berbagi pengalaman perjalanan dan kuliner dari berbagai belahan dunia.</p>
-                <p>Dengan lebih dari 200 destinasi dan 500 kuliner yang telah kami jelajahi, kami berkomitmen untuk memberikan konten berkualitas tinggi yang menginspirasi Anda untuk menjelajahi dunia.</p>
-                <a href="#" class="btn">Selengkapnya Tentang Kami</a>
-            </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About Us">
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Berlangganan Newsletter Kami</h2>
-            <p>Dapatkan update terbaru tentang vlog travel dan kuliner langsung ke inbox Anda</p>
-            
-            <form class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Alamat email Anda">
-                <button type="submit" class="newsletter-btn">Berlangganan</button>
-            </form>
         </div>
     </section>
 
@@ -802,7 +722,6 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
-                    <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Kembali ke Atas</a>
                 </div>
                 
                 <div class="footer-col">
@@ -814,19 +733,17 @@
                         <li><a href="#">Petualangan Alam</a></li>
                         <li><a href="#">Wisata Budaya</a></li>
                     </ul>
-                    <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Kembali ke Atas</a>
                 </div>
                 
                 <div class="footer-col">
                     <h3>Link Cepat</h3>
                     <ul class="footer-links">
-                        <li><a href="#top">Home</a></li>
                         <li><a href="#">Tentang Kami</a></li>
                         <li><a href="#">Kontak</a></li>
                         <li><a href="#">Kebijakan Privasi</a></li>
                         <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Karir</a></li>
                     </ul>
-                    <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Kembali ke Atas</a>
                 </div>
                 
                 <div class="footer-col">
@@ -834,7 +751,6 @@
                     <p><i class="fas fa-map-marker-alt"></i> Jl. Petualangan No. 123, Jakarta</p>
                     <p><i class="fas fa-phone"></i> +62 123 456 789</p>
                     <p><i class="fas fa-envelope"></i> hello@jalanmakan.com</p>
-                    <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i> Kembali ke Atas</a>
                 </div>
             </div>
             
@@ -869,6 +785,23 @@
             }
         });
 
+        // Tab Switching
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                btn.classList.add('active');
+                const target = btn.getAttribute('data-target');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -879,8 +812,20 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    // If it's a tab link, switch to that tab
+                    if (targetId === '#indonesia' || targetId === '#international') {
+                        tabBtns.forEach(b => b.classList.remove('active'));
+                        tabContents.forEach(c => c.classList.remove('active'));
+                        
+                        const tabBtn = document.querySelector(`.tab-btn[data-target="${targetId.substring(1)}"]`);
+                        if (tabBtn) {
+                            tabBtn.classList.add('active');
+                            targetElement.classList.add('active');
+                        }
+                    }
+                    
                     window.scrollTo({
-                        top: targetId === '#top' ? 0 : targetElement.offsetTop - 100,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
                     
@@ -894,4 +839,4 @@
         });
     </script>
 </body>
-</html>v
+</html>
