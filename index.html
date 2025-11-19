@@ -3,839 +3,1148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destinasi - JalanMakan</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>" type="image/svg+xml">
+    <title>Jalan Makan | Travel & Food Guide</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Panduan lengkap perjalanan dan kuliner terbaik. Temukan destinasi wisata menakjubkan dan pengalaman kuliner autentik di seluruh dunia.">
+    <meta name="keywords" content="travel, makanan, kuliner, destinasi, wisata, petualangan, jalan-jalan, guide">
+    <meta name="author" content="Jalan Makan">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Jalan Makan | Travel & Food Guide">
+    <meta property="og:description" content="Panduan lengkap perjalanan dan kuliner terbaik di seluruh dunia.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://jalanmakan.com">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #FF6B6B;
-            --secondary: #4ECDC4;
-            --accent: #FFE66D;
-            --dark: #1A1A2E;
-            --light: #F8F9FA;
-            --text: #333333;
+            --primary: #e74c3c;
+            --primary-dark: #c0392b;
+            --accent: #f39c12;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --text: #333;
+            --gray: #95a5a6;
             --transition: all 0.3s ease;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Poppins', sans-serif;
-            color: var(--text);
-            background-color: var(--light);
             line-height: 1.6;
-            overflow-x: hidden;
+            color: var(--text);
+            background-color: #f8f9fa;
         }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-
-        .btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Header & Navigation */
+        
+        /* Header - Fixed with no top space */
         header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
         }
-
-        header.scrolled {
-            padding: 10px 0;
-            background-color: rgba(255, 255, 255, 0.98);
-        }
-
+        
         .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
+            padding: 0.5rem 0;
         }
-
+        
         .logo {
-            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary);
+            text-decoration: none;
         }
-
+        
         .logo span {
-            color: var(--secondary);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-            position: relative;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            position: relative;
-        }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-
-        .submenu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: white;
-            width: 200px;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: var(--transition);
-            z-index: 1000;
-        }
-
-        .nav-links li:hover .submenu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .submenu li {
-            margin: 0;
-            padding: 0;
-        }
-
-        .submenu a {
-            display: block;
-            padding: 12px 20px;
-            border-bottom: 1px solid #f1f1f1;
-        }
-
-        .submenu a:hover {
-            background-color: #f9f9f9;
-            color: var(--primary);
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-
-        /* Page Header */
-        .page-header {
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7)), url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            margin-top: 80px;
-        }
-
-        .page-header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .breadcrumb {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            font-size: 1.1rem;
-        }
-
-        .breadcrumb li {
-            margin: 0 10px;
-            position: relative;
-        }
-
-        .breadcrumb li:after {
-            content: '/';
-            position: absolute;
-            right: -15px;
-            color: #ccc;
-        }
-
-        .breadcrumb li:last-child:after {
-            display: none;
-        }
-
-        .breadcrumb a:hover {
             color: var(--accent);
         }
-
-        /* Destinations Tabs */
-        .destinations {
-            padding: 80px 0;
-        }
-
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #eee;
-        }
-
-        .tab-btn {
-            padding: 15px 30px;
-            background: none;
-            border: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #777;
-            cursor: pointer;
-            position: relative;
+        
+        .nav-link {
+            color: var(--dark);
+            font-weight: 500;
+            padding: 8px 15px;
+            margin: 0 2px;
+            border-radius: 4px;
             transition: var(--transition);
+            text-decoration: none;
+            display: block;
         }
-
-        .tab-btn:after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 3px;
+        
+        .nav-link:hover, .nav-link.active {
             background-color: var(--primary);
-            transition: var(--transition);
+            color: white;
         }
-
-        .tab-btn.active {
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        
+        .dropdown-item {
+            padding: 8px 16px;
+            transition: var(--transition);
+            text-decoration: none;
+            display: block;
+            color: var(--dark);
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--light);
             color: var(--primary);
         }
-
-        .tab-btn.active:after {
+        
+        /* Sections - Start right after header */
+        .section {
+            display: none;
+            min-height: 100vh;
+            padding: 80px 0 20px;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        /* Home Section */
+        #home {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-content {
+            text-align: center;
             width: 100%;
         }
-
-        .tab-content {
-            display: none;
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
+        
+        .hero p.lead {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        .search-bar {
+            max-width: 500px;
+            margin: 2rem auto;
         }
-
-        /* Destination Grid */
-        .destination-grid {
+        
+        /* Content Sections */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Travel Grid Layout */
+        .travel-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
-
-        .destination-card {
-            background-color: white;
-            border-radius: 10px;
+        
+        .travel-card {
+            background: white;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             transition: var(--transition);
+            cursor: pointer;
         }
-
-        .destination-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        
+        .travel-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         }
-
-        .destination-img {
-            height: 200px;
+        
+        .travel-image {
+            height: 250px;
             overflow: hidden;
+            position: relative;
         }
-
-        .destination-img img {
+        
+        .travel-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
+            transition: transform 0.5s ease;
         }
-
-        .destination-card:hover .destination-img img {
+        
+        .travel-card:hover .travel-image img {
             transform: scale(1.1);
         }
-
-        .destination-content {
-            padding: 20px;
+        
+        .travel-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
-
-        .destination-title {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+        
+        .travel-content {
+            padding: 1.5rem;
         }
-
-        .destination-location {
-            display: flex;
-            align-items: center;
-            color: #777;
-            margin-bottom: 15px;
+        
+        .travel-rating {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
         }
-
-        .destination-location i {
-            margin-right: 5px;
-            color: var(--primary);
+        
+        .travel-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
         }
-
-        .destination-excerpt {
-            margin-bottom: 15px;
-            color: #555;
+        
+        .travel-content p {
+            color: var(--gray);
+            margin-bottom: 1rem;
         }
-
-        .destination-meta {
+        
+        .travel-meta {
             display: flex;
             justify-content: space-between;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-            margin-top: 15px;
+            align-items: center;
+            margin-top: 1rem;
         }
-
-        .destination-meta span {
+        
+        .travel-location {
             display: flex;
             align-items: center;
-            color: #777;
+            color: var(--gray);
             font-size: 0.9rem;
         }
-
-        .destination-meta i {
+        
+        .travel-location i {
             margin-right: 5px;
-            color: var(--primary);
         }
-
+        
+        /* Food Grid Layout */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .food-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .food-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .food-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .food-card:hover .food-image img {
+            transform: scale(1.1);
+        }
+        
+        .food-category {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .food-content {
+            padding: 1.5rem;
+        }
+        
+        .food-rating {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Ads */
+        .ad-container {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 8px;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            margin: 2rem 0 0 0;
+        }
+        
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background: var(--dark);
             color: white;
-            padding: 60px 0 30px;
+            padding: 2rem 0 0;
         }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-col h3 {
-            color: white;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-col h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--primary);
-        }
-
-        .footer-col p {
-            margin-bottom: 15px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
+        
         .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+            color: white;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        
+        /* Search Results */
+        .search-results {
+            display: none;
+            margin-top: 1rem;
+        }
+        
+        .search-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
             transition: var(--transition);
         }
-
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-5px);
+        
+        .search-item:hover {
+            background-color: #f9f9f9;
         }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: #ccc;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .page-header h1 {
-                font-size: 2.8rem;
-            }
-        }
-
+        
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 0;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: white;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: var(--transition);
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links li {
-                margin: 15px 0;
-            }
-            
-            .submenu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                width: auto;
-                background: transparent;
-                box-shadow: none;
-                margin-top: 10px;
-                display: none;
-            }
-            
-            .nav-links li:hover .submenu {
-                display: block;
-            }
-            
-            .submenu a {
-                padding: 8px 20px;
-                border-bottom: none;
-            }
-            
-            .hamburger {
-                display: block;
-                z-index: 1001;
-            }
-            
-            .page-header h1 {
-                font-size: 2.3rem;
-            }
-            
-            .tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tab-btn {
-                width: 100%;
-                text-align: center;
-                border-bottom: 1px solid #eee;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .page-header h1 {
+            .hero h1 {
                 font-size: 2rem;
             }
             
-            .breadcrumb {
-                flex-direction: column;
-                align-items: center;
+            .section {
+                padding: 70px 0 20px;
             }
             
-            .breadcrumb li {
-                margin: 5px 0;
-            }
-            
-            .breadcrumb li:after {
-                display: none;
-            }
-            
-            .destination-grid {
+            .travel-grid, .food-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .navbar-nav {
+                text-align: center;
+            }
+            
+            .dropdown-menu {
+                text-align: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Monetization UI Elements */
+        .affiliate-banner {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .premium-badge {
+            background: var(--accent);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 5px;
+        }
+        
+        /* Filter Buttons */
+        .filter-btn {
+            transition: var(--transition);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary) !important;
+            color: white !important;
+            border-color: var(--primary) !important;
+        }
+        
+        /* Travel Filter */
+        .travel-filter {
+            margin-bottom: 2rem;
+        }
+
+        /* SSL Security Badge */
+        .ssl-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Fix untuk navbar toggler */
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* Pastikan konten tidak tertutup navbar */
+        main {
+            margin-top: 0;
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header id="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">Jalan<span>Makan</span></a>
-                
-                <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li>
-                        <a href="#">Destinasi <i class="fas fa-chevron-down"></i></a>
-                        <ul class="submenu">
-                            <li><a href="#indonesia">Indonesia</a></li>
-                            <li><a href="#international">International</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Kuliner</a></li>
-                    <li><a href="#">Tips</a></li>
-                    <li><a href="#">Tentang</a></li>
-                    <li><a href="#">Kontak</a></li>
-                </ul>
-                
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
+    <!-- SSL Security Badge -->
+    <div class="ssl-badge">
+        <i class="fas fa-lock"></i> Secure HTTPS
+    </div>
+
+    <!-- Header - Fixed at top with no space -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand logo" href="#home">Jalan <span>Makan</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#home">Beranda</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Travel
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#travel">Semua Destinasi</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#travel">Asia</a></li>
+                                <li><a class="dropdown-item" href="#travel">Eropa</a></li>
+                                <li><a class="dropdown-item" href="#travel">Amerika</a></li>
+                                <li><a class="dropdown-item" href="#travel">Lokal Indonesia</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Kuliner
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#food">Semua Kuliner</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#food">Makanan Jalanan</a></li>
+                                <li><a class="dropdown-item" href="#food">Restoran</a></li>
+                                <li><a class="dropdown-item" href="#food">Masakan Tradisional</a></li>
+                                <li><a class="dropdown-item" href="#food">Dessert & Minuman</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Tips
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#tips">Semua Tips</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#tips">Budget</a></li>
+                                <li><a class="dropdown-item" href="#tips">Packing</a></li>
+                                <li><a class="dropdown-item" href="#tips">Kesehatan</a></li>
+                                <li><a class="dropdown-item" href="#tips">Fotografi</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">Tentang</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Kontak</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Search Bar in Header -->
+                    <div class="d-flex">
+                        <div class="search-bar-header position-relative">
+                            <div class="input-group">
+                                <input type="text" id="headerSearchInput" class="form-control form-control-sm" placeholder="Cari...">
+                                <button class="btn btn-primary btn-sm" type="button" onclick="performHeaderSearch()">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            <div id="headerSearchResults" class="search-results position-absolute bg-white shadow mt-1" style="width: 300px; display: none; z-index: 1001; border-radius: 8px;"></div>
+                        </div>
+                    </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Destinasi Menarik</h1>
-            <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li>Destinasi</li>
-            </ul>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Jalan Makan</h1>
+                    <p class="lead">Jelajahi dunia melalui cerita perjalanan dan petualangan kuliner</p>
+                    <div class="search-bar">
+                        <div class="input-group">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Cari destinasi, makanan, atau tips...">
+                            <button class="btn btn-primary" type="button" onclick="performSearch()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+                    <button class="btn btn-outline-light me-2" onclick="showSection('travel')">
+                        Jelajahi Destinasi <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-outline-light" onclick="showSection('food')">
+                        Temukan Kuliner <i class="fas fa-utensils"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
 
-    <!-- Destinations Section -->
-    <section class="destinations">
-        <div class="container">
-            <div class="tabs">
-                <button class="tab-btn active" data-target="indonesia">Indonesia</button>
-                <button class="tab-btn" data-target="international">International</button>
-            </div>
-            
-            <div id="indonesia" class="tab-content active">
-                <h2 class="section-title">Destinasi Terbaik di Indonesia</h2>
-                <div class="destination-grid">
-                    <div class="destination-card">
-                        <div class="destination-img">
-                            <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Bali">
+        <!-- Travel Section -->
+        <section id="travel" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Destinasi Travel</h2>
+                    <p>Temukan tempat-tempat menakjubkan di seluruh dunia untuk petualangan tak terlupakan</p>
+                </div>
+                
+                <!-- Travel Categories Navigation -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="d-flex flex-wrap justify-content-center gap-2 travel-filter" id="travelFilter">
+                            <button class="btn btn-outline-primary filter-btn active" onclick="filterTravel('all')">Semua</button>
+                            <button class="btn btn-outline-primary filter-btn" onclick="filterTravel('asia')">Asia</button>
+                            <button class="btn btn-outline-primary filter-btn" onclick="filterTravel('europe')">Eropa</button>
+                            <button class="btn btn-outline-primary filter-btn" onclick="filterTravel('america')">Amerika</button>
+                            <button class="btn btn-outline-primary filter-btn" onclick="filterTravel('indonesia')">Indonesia</button>
+                            <button class="btn btn-outline-primary filter-btn" onclick="filterTravel('beach')">Pantai</button>
+                            <button class="btn btn-outline-primary filter-btn" onclick="filterTravel('mountain')">Pegunungan</button>
                         </div>
-                        <div class="destination-content">
-                            <h3 class="destination-title">Bali</h3>
-                            <div class="destination-location">
-                                <i class="fas fa-map-marker-alt"></i> Pulau Dewata, Indonesia
+                    </div>
+                </div>
+                
+                <!-- Travel Grid -->
+                <div class="travel-grid" id="travelGrid">
+                    <!-- Bali Destination -->
+                    <div class="travel-card" data-category="asia indonesia beach" onclick="showTravelDetail('bali')">
+                        <div class="travel-image">
+                            <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Pemandangan pantai Bali dengan ombak biru dan pohon kelapa">
+                            <span class="travel-category">Pantai</span>
+                        </div>
+                        <div class="travel-content">
+                            <div class="travel-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="ms-2">4.7</span>
                             </div>
-                            <p class="destination-excerpt">Pulau eksotis dengan pantai menakjubkan, budaya yang kaya, dan makanan lezat yang memikat hati setiap traveler.</p>
-                            <div class="destination-meta">
-                                <span><i class="fas fa-utensils"></i> Kuliner Khas</span>
-                                <span><i class="fas fa-heart"></i> 4.9 (2.5k)</span>
+                            <h3>Bali - Pulau Dewata</h3>
+                            <p>Destinasi tropis dengan pantai menakjubkan, budaya yang kaya, dan kuliner autentik. Temukan sisi lain Bali di luar tempat wisata populer.</p>
+                            <div class="travel-meta">
+                                <div class="travel-location">
+                                    <i class="fas fa-map-marker-alt"></i> Indonesia
+                                </div>
+                                <small class="text-muted">7 Hari</small>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="destination-card">
-                        <div class="destination-img">
-                            <img src="https://images.unsplash.com/photo-1589330273594-3a53eca48a6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Yogyakarta">
+                    <!-- Kyoto Destination -->
+                    <div class="travel-card" data-category="asia japan culture" onclick="showTravelDetail('kyoto')">
+                        <div class="travel-image">
+                            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kuil tradisional Jepang di Kyoto dengan taman yang indah">
+                            <span class="travel-category">Budaya</span>
                         </div>
-                        <div class="destination-content">
-                            <h3 class="destination-title">Yogyakarta</h3>
-                            <div class="destination-location">
-                                <i class="fas fa-map-marker-alt"></i> Jawa Tengah, Indonesia
+                        <div class="travel-content">
+                            <div class="travel-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="ms-2">5.0</span>
                             </div>
-                            <p class="destination-excerpt">Kota budaya dengan candi megah, keraton bersejarah, dan street food yang menggugah selera.</p>
-                            <div class="destination-meta">
-                                <span><i class="fas fa-utensils"></i> Gudeg & Bakpia</span>
-                                <span><i class="fas fa-heart"></i> 4.8 (1.8k)</span>
+                            <h3>Kyoto - Kota Seribu Kuil</h3>
+                            <p>Jelajahi ibu kota budaya Jepang dengan kuil-kuil kuno, taman tradisional, dan festival musiman yang memukau.</p>
+                            <div class="travel-meta">
+                                <div class="travel-location">
+                                    <i class="fas fa-map-marker-alt"></i> Jepang
+                                </div>
+                                <small class="text-muted">5 Hari</small>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="destination-card">
-                        <div class="destination-img">
-                            <img src="https://images.unsplash.com/photo-1599636448011-14c8b2ddfc83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Raja Ampat">
+                    <!-- Swiss Alps Destination -->
+                    <div class="travel-card" data-category="europe mountain adventure" onclick="showTravelDetail('swiss-alps')">
+                        <div class="travel-image">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pegunungan Alpen Swiss dengan danau biru jernih dan pemandangan alpine">
+                            <span class="travel-category">Pegunungan</span>
                         </div>
-                        <div class="destination-content">
-                            <h3 class="destination-title">Raja Ampat</h3>
-                            <div class="destination-location">
-                                <i class="fas fa-map-marker-alt"></i> Papua Barat, Indonesia
+                        <div class="travel-content">
+                            <div class="travel-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="ms-2">4.0</span>
                             </div>
-                            <p class="destination-excerpt">Surga bawah laut dengan keanekaragaman hayati terumbu karang tertinggi di dunia dan pemandangan alam yang memesona.</p>
-                            <div class="destination-meta">
-                                <span><i class="fas fa-utensils"></i> Seafood Segar</span>
-                                <span><i class="fas fa-heart"></i> 4.9 (1.2k)</span>
+                            <h3>Alpen Swiss - Surga Pegunungan</h3>
+                            <p>Pengalaman mendaki dan menikmati keindahan alam Alpen Swiss dengan desa-desa tradisional dan pemandangan spektakuler.</p>
+                            <div class="travel-meta">
+                                <div class="travel-location">
+                                    <i class="fas fa-map-marker-alt"></i> Swiss
+                                </div>
+                                <small class="text-muted">10 Hari</small>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Affiliate Banner -->
+                <div class="affiliate-banner mt-5">
+                    <h5><i class="fas fa-plane"></i> Dapatkan Tiket Pesawat Terbaik!</h5>
+                    <p>Bandingkan harga dari berbagai maskapai dan dapatkan penawaran terbaik untuk perjalanan Anda</p>
+                    <button class="btn btn-light btn-sm">Cari Tiket Sekarang</button>
+                </div>
             </div>
-            
-            <div id="international" class="tab-content">
-                <h2 class="section-title">Destinasi Terbaik International</h2>
-                <div class="destination-grid">
-                    <div class="destination-card">
-                        <div class="destination-img">
-                            <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Jepang">
+        </section>
+
+        <!-- Food Section -->
+        <section id="food" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Kuliner & Makanan</h2>
+                    <p>Temukan pengalaman kuliner yang menakjubkan dari seluruh dunia</p>
+                </div>
+                
+                <!-- Food Categories Navigation -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="d-flex flex-wrap justify-content-center gap-2" id="foodFilter">
+                            <button class="btn btn-outline-primary filter-btn active" onclick="filterFood('all')">Semua</button>
+                            <button class="btn btn-outline-primary filter-btn" onclick="filterFood('street-food')">Makanan Jalanan</button>
+                            <button class="btn btn-outline-primary filter-btn" onclick="filterFood('restaurant')">Restoran</button>
+                            <button class="btn btn-outline-primary filter-btn" onclick="filterFood('traditional')">Tradisional</button>
+                            <button class="btn btn-outline-primary filter-btn" onclick="filterFood('dessert')">Dessert</button>
+                            <button class="btn btn-outline-primary filter-btn" onclick="filterFood('indonesian')">Indonesia</button>
                         </div>
-                        <div class="destination-content">
-                            <h3 class="destination-title">Jepang</h3>
-                            <div class="destination-location">
-                                <i class="fas fa-map-marker-alt"></i> Asia Timur
+                    </div>
+                </div>
+                
+                <!-- Food Grid -->
+                <div class="food-grid" id="foodGrid">
+                    <!-- Street Food Items -->
+                    <div class="food-card" data-category="street-food indonesian" onclick="showFoodDetail('sate-madura')">
+                        <div class="food-image">
+                            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sate ayam dengan bumbu kacang dan lontong">
+                            <span class="food-category">Street Food</span>
+                        </div>
+                        <div class="food-content">
+                            <div class="food-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="ms-2">4.5</span>
                             </div>
-                            <p class="destination-excerpt">Negara dengan perpaduan tradisi kuno dan teknologi modern, menawarkan kuliner lezat dari sushi hingga ramen.</p>
-                            <div class="destination-meta">
-                                <span><i class="fas fa-utensils"></i> Sushi & Ramen</span>
-                                <span><i class="fas fa-heart"></i> 4.9 (3.2k)</span>
+                            <h5>Sate Ayam Madura Legendaris</h5>
+                            <p class="text-muted">Sate ayam dengan bumbu kacang khas Madura yang menggugah selera. Daging empuk dan bumbu yang meresap sempurna.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-primary">Indonesia</span>
+                                <small class="text-muted">15 menit dibaca</small>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="destination-card">
-                        <div class="destination-img">
-                            <img src="https://images.unsplash.com/photo-1502602898536-47ad22581b52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Prancis">
+                    <div class="food-card" data-category="street-food" onclick="showFoodDetail('taco-mexico')">
+                        <div class="food-image">
+                            <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Taco Mexico dengan berbagai isian segar">
+                            <span class="food-category">Street Food</span>
                         </div>
-                        <div class="destination-content">
-                            <h3 class="destination-title">Prancis</h3>
-                            <div class="destination-location">
-                                <i class="fas fa-map-marker-alt"></i> Eropa Barat
+                        <div class="food-content">
+                            <div class="food-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="ms-2">5.0</span>
                             </div>
-                            <p class="destination-excerpt">Negara mode dan seni dengan menara Eiffel ikonik, museum Louvre, dan masakan kelas dunia seperti croissant dan wine.</p>
-                            <div class="destination-meta">
-                                <span><i class="fas fa-utensils"></i> Wine & Pastry</span>
-                                <span><i class="fas fa-heart"></i> 4.7 (2.8k)</span>
+                            <h5>Taco Autentik Mexico City</h5>
+                            <p class="text-muted">Taco jalanan dengan tortilla jagung fresh, daging yang dimasak sempurna, dan salsas homemade.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-success">Mexico</span>
+                                <small class="text-muted">12 menit dibaca</small>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="destination-card">
-                        <div class="destination-img">
-                            <img src="https://images.unsplash.com/photo-1506970840772-503770eb8c51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Thailand">
+                    <!-- Restaurant Items -->
+                    <div class="food-card" data-category="restaurant" onclick="showFoodDetail('pizza-naples')">
+                        <div class="food-image">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pizza Neapolitan tradisional">
+                            <span class="food-category">Restoran</span>
                         </div>
-                        <div class="destination-content">
-                            <h3 class="destination-title">Thailand</h3>
-                            <div class="destination-location">
-                                <i class="fas fa-map-marker-alt"></i> Asia Tenggara
+                        <div class="food-content">
+                            <div class="food-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="ms-2">4.5</span>
                             </div>
-                            <p class="destination-excerpt">Negeri seribu pagoda dengan street food terbaik di dunia, pantai eksotis, dan budaya yang memikat.</p>
-                            <div class="destination-meta">
-                                <span><i class="fas fa-utensils"></i> Tom Yum & Mango Sticky Rice</span>
-                                <span><i class="fas fa-heart"></i> 4.8 (2.1k)</span>
+                            <h5>Pizza Neapolitan di Naples</h5>
+                            <p class="text-muted">Pengalaman makan pizza otentik di tempat kelahirannya. Kerak tipis, pinggiran menggelembung, dan topping sederhana namun sempurna.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-info">Italia</span>
+                                <small class="text-muted">18 menit dibaca</small>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Affiliate Banner -->
+                <div class="affiliate-banner mt-5">
+                    <h5><i class="fas fa-utensils"></i> Perlengkapan Dapur Premium</h5>
+                    <p>Tingkatkan pengalaman memasak Anda dengan perlengkapan dapur berkualitas dari mitra kami</p>
+                    <button class="btn btn-light btn-sm">Lihat Koleksi</button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <div class="container text-center">
+                <h3>Bergabung dengan Komunitas Foodie Kami</h3>
+                <p class="mb-3">Berlangganan untuk mendapatkan tips perjalanan eksklusif, resep, dan panduan destinasi.</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Alamat email Anda">
+                            <button class="btn btn-primary" type="button">Berlangganan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h3>JalanMakan</h3>
-                    <p>Platform vlog travel dan kuliner terkemuka yang menginspirasi petualangan dan eksplorasi rasa.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Jalan Makan</h5>
+                    <p>Panduan Anda untuk menjelajahi dunia melalui perjalanan dan makanan.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
                     </div>
                 </div>
-                
-                <div class="footer-col">
-                    <h3>Kategori</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Destinasi Travel</a></li>
-                        <li><a href="#">Kuliner Street Food</a></li>
-                        <li><a href="#">Fine Dining</a></li>
-                        <li><a href="#">Petualangan Alam</a></li>
-                        <li><a href="#">Wisata Budaya</a></li>
+                <div class="col-md-2">
+                    <h6>Tautan Cepat</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-light">Beranda</a></li>
+                        <li><a href="#travel" class="text-light">Travel</a></li>
+                        <li><a href="#food" class="text-light">Kuliner</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-col">
-                    <h3>Link Cepat</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Tentang Kami</a></li>
-                        <li><a href="#">Kontak</a></li>
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                        <li><a href="#">Karir</a></li>
+                <div class="col-md-2">
+                    <h6>Kategori</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#travel" class="text-light">Destinasi Asia</a></li>
+                        <li><a href="#travel" class="text-light">Eropa</a></li>
+                        <li><a href="#food" class="text-light">Street Food</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-col">
-                    <h3>Kontak</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Jl. Petualangan No. 123, Jakarta</p>
-                    <p><i class="fas fa-phone"></i> +62 123 456 789</p>
+                <div class="col-md-4">
+                    <h6>Info Kontak</h6>
                     <p><i class="fas fa-envelope"></i> hello@jalanmakan.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Berbasis di Jakarta, Indonesia</p>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2023 JalanMakan. All rights reserved.</p>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2023 Jalan Makan. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
-        // Sticky Header
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        // Content data for search functionality
+        const contentData = [
+            // Travel Content
+            { 
+                title: "Bali - Pulau Dewata", 
+                description: "Destinasi tropis dengan pantai menakjubkan, budaya yang kaya, dan kuliner autentik.", 
+                category: "travel", 
+                tags: ["indonesia", "asia", "pantai", "budaya", "bali"],
+                section: "travel"
+            },
+            { 
+                title: "Kyoto - Kota Seribu Kuil", 
+                description: "Jelajahi ibu kota budaya Jepang dengan kuil-kuil kuno dan taman tradisional.", 
+                category: "travel", 
+                tags: ["jepang", "asia", "budaya", "kuil", "kyoto"],
+                section: "travel"
+            },
+            { 
+                title: "Alpen Swiss - Surga Pegunungan", 
+                description: "Pengalaman mendaki dan menikmati keindahan alam Alpen Swiss.", 
+                category: "travel", 
+                tags: ["swiss", "eropa", "pegunungan", "alam", "petualangan"],
+                section: "travel"
+            },
+            // Food Content
+            { 
+                title: "Sate Ayam Madura Legendaris", 
+                description: "Sate ayam dengan bumbu kacang khas Madura yang menggugah selera.", 
+                category: "kuliner", 
+                tags: ["indonesia", "street food", "sate", "madura"],
+                section: "food"
+            },
+            { 
+                title: "Taco Autentik Mexico City", 
+                description: "Taco jalanan dengan tortilla jagung fresh dan salsas homemade.", 
+                category: "kuliner", 
+                tags: ["mexico", "street food", "taco", "makanan pedas"],
+                section: "food"
+            },
+            { 
+                title: "Pizza Neapolitan di Naples", 
+                description: "Pengalaman makan pizza otentik di tempat kelahirannya.", 
+                category: "kuliner", 
+                tags: ["italia", "restoran", "pizza", "neapolitan"],
+                section: "food"
             }
-        });
+        ];
 
-        // Mobile Menu Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            
-            if (navLinks.classList.contains('active')) {
-                hamburger.innerHTML = '<i class="fas fa-times"></i>';
-            } else {
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
-
-        // Tab Switching
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked button and corresponding content
-                btn.classList.add('active');
-                const target = btn.getAttribute('data-target');
-                document.getElementById(target).classList.add('active');
+        // Simple SPA Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
             });
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + sectionId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Update meta title dynamically for SEO
+            updateMetaTitle(sectionId);
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Update meta title for better SEO in SPA
+        function updateMetaTitle(sectionId) {
+            const sectionTitles = {
+                'home': 'Jalan Makan | Travel & Food Guide',
+                'travel': 'Destinasi Travel Menakjubkan | Jalan Makan',
+                'food': 'Kuliner & Makanan Terbaik | Jalan Makan',
+                'tips': 'Tips & Panduan Perjalanan | Jalan Makan',
+                'about': 'Tentang Kami | Jalan Makan',
+                'contact': 'Hubungi Kami | Jalan Makan'
+            };
+            
+            if (sectionTitles[sectionId]) {
+                document.title = sectionTitles[sectionId];
+            }
+        }
+        
+        // Search functionality
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+            
+            if (searchTerm.length < 2) {
+                resultsContainer.style.display = 'none';
+                return;
+            }
+            
+            const filteredResults = contentData.filter(item => 
+                item.title.toLowerCase().includes(searchTerm) ||
+                item.description.toLowerCase().includes(searchTerm) ||
+                item.tags.some(tag => tag.includes(searchTerm)) ||
+                item.category.includes(searchTerm)
+            );
+            
+            displaySearchResults(filteredResults, resultsContainer);
+        }
+        
+        function performHeaderSearch() {
+            const searchTerm = document.getElementById('headerSearchInput').value.toLowerCase();
+            const resultsContainer = document.getElementById('headerSearchResults');
+            
+            if (searchTerm.length < 2) {
+                resultsContainer.style.display = 'none';
+                return;
+            }
+            
+            const filteredResults = contentData.filter(item => 
+                item.title.toLowerCase().includes(searchTerm) ||
+                item.description.toLowerCase().includes(searchTerm) ||
+                item.tags.some(tag => tag.includes(searchTerm)) ||
+                item.category.includes(searchTerm)
+            );
+            
+            displaySearchResults(filteredResults, resultsContainer);
+        }
+        
+        function displaySearchResults(results, container) {
+            if (results.length === 0) {
+                container.innerHTML = '<div class="search-item p-3">Tidak ada hasil ditemukan</div>';
+                container.style.display = 'block';
+                return;
+            }
+            
+            container.innerHTML = '';
+            results.forEach(result => {
+                const resultElement = document.createElement('div');
+                resultElement.className = 'search-item p-3';
+                resultElement.innerHTML = `
+                    <h6 class="mb-1">${result.title}</h6>
+                    <p class="mb-1 small">${result.description}</p>
+                    <small class="text-muted">Kategori: ${result.category}</small>
+                `;
+                resultElement.addEventListener('click', () => {
+                    showSection(result.section);
+                    container.style.display = 'none';
+                    document.getElementById('searchInput').value = '';
+                    document.getElementById('headerSearchInput').value = '';
+                });
+                container.appendChild(resultElement);
+            });
+            
+            container.style.display = 'block';
+        }
+        
+        // Travel filtering functionality
+        function filterTravel(category) {
+            const travelCards = document.querySelectorAll('.travel-card');
+            const filterButtons = document.querySelectorAll('.travel-filter .filter-btn');
+            
+            // Update active button
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Show/hide cards based on category
+            travelCards.forEach(card => {
+                if (category === 'all' || card.dataset.category.includes(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Food filtering functionality
+        function filterFood(category) {
+            const foodCards = document.querySelectorAll('.food-card');
+            const filterButtons = document.querySelectorAll('#foodFilter .filter-btn');
+            
+            // Update active button
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Show/hide cards based on category
+            foodCards.forEach(card => {
+                if (category === 'all' || card.dataset.category.includes(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Travel detail modal
+        function showTravelDetail(travelId) {
+            const travelDetails = {
+                'bali': {
+                    title: 'Bali - Pulau Dewata',
+                    image: 'https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80',
+                    rating: 4.7,
+                    location: 'Bali, Indonesia',
+                    duration: '7 Hari',
+                    description: 'Destinasi tropis dengan pantai menakjubkan, budaya yang kaya, dan kuliner autentik. Temukan sisi lain Bali di luar tempat wisata populer.',
+                    details: 'Bali menawarkan kombinasi sempurna antara alam, budaya, dan spiritualitas. Dari pantai-pantai berpasir putih di selatan hingga sawah terasering hijau di Ubud, setiap sudut pulau ini memiliki pesona unik.'
+                },
+                'kyoto': {
+                    title: 'Kyoto - Kota Seribu Kuil',
+                    image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+                    rating: 5.0,
+                    location: 'Kyoto, Jepang',
+                    duration: '5 Hari',
+                    description: 'Jelajahi ibu kota budaya Jepang dengan kuil-kuil kuno, taman tradisional, dan festival musiman yang memukau.',
+                    details: 'Kyoto adalah rumah bagi lebih dari 2000 kuil dan shrine, termasuk Kuil Kinkaku-ji yang terkenal (Golden Pavilion) dan Fushimi Inari dengan ribuan torii gate yang ikonik.'
+                }
+            };
+            
+            const travel = travelDetails[travelId];
+            if (travel) {
+                alert(`Detail: ${travel.title}\n\nLokasi: ${travel.location}\nDurasi: ${travel.duration}\nRating: ${travel.rating}/5.0\n\n${travel.description}\n\n${travel.details}`);
+            }
+        }
+        
+        // Food detail modal
+        function showFoodDetail(foodId) {
+            const foodDetails = {
+                'sate-madura': {
+                    title: 'Sate Ayam Madura Legendaris',
+                    image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                    rating: 4.5,
+                    location: 'Madura, Indonesia',
+                    description: 'Sate ayam dengan bumbu kacang khas Madura yang telah diwariskan turun-temurun.',
+                    details: 'Bumbu kacang yang khas dibuat dari kacang tanah goreng yang dihaluskan dengan bawang putih, cabe, gula merah, dan rempah-rempah lainnya. Disajikan dengan lontong dan irisan bawang merah.'
+                }
+            };
+            
+            const food = foodDetails[foodId];
+            if (food) {
+                alert(`Detail: ${food.title}\n\n${food.description}\n\n${food.details}`);
+            }
+        }
+        
+        // Add click events to nav links and dropdown items
+        document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // If it's a tab link, switch to that tab
-                    if (targetId === '#indonesia' || targetId === '#international') {
-                        tabBtns.forEach(b => b.classList.remove('active'));
-                        tabContents.forEach(c => c.classList.remove('active'));
-                        
-                        const tabBtn = document.querySelector(`.tab-btn[data-target="${targetId.substring(1)}"]`);
-                        if (tabBtn) {
-                            tabBtn.classList.add('active');
-                            targetElement.classList.add('active');
-                        }
-                    }
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const sectionId = href.substring(1);
+                    showSection(sectionId);
                     
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                    // Close mobile navbar after click
+                    const navbarCollapse = document.getElementById('navbarNav');
+                    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bsCollapse.hide();
                     }
                 }
             });
+        });
+        
+        // Live search as user types
+        document.getElementById('searchInput').addEventListener('input', performSearch);
+        document.getElementById('headerSearchInput').addEventListener('input', performHeaderSearch);
+        
+        // Close search results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-bar')) {
+                document.getElementById('searchResults').style.display = 'none';
+            }
+            if (!e.target.closest('.search-bar-header')) {
+                document.getElementById('headerSearchResults').style.display = 'none';
+            }
+        });
+        
+        // Handle initial page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show home section by default
+            showSection('home');
+            
+            // Initialize meta title
+            updateMetaTitle('home');
         });
     </script>
 </body>
